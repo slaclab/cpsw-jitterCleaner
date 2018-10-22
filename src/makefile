@@ -1,0 +1,29 @@
+#
+# Disable CCACHE
+CCACHE_DISABLE=1
+#LDFLAGS += -Wl,-Bstatic -static-libgcc
+#LDFLAGS += -Wl,-Bstatic
+#
+CPSW_DIR=/afs/slac/g/lcls/package/cpsw/framework/R3.6.6/src
+
+# may override CPSW_DIR / DEVICELIB_DIR from release.mak
+# must set SRCDIR (is redefined by recursive make)
+SRCDIR= .
+-include $(SRCDIR)/release.mak
+
+include $(CPSW_DIR)/defs.mak
+INSTALL_DIR=../
+
+#HEADERS = RamControl.hh TPGMini.hh TPG.hh AmcCarrier.hh
+CXXFLAGS += -g -DFRAMEWORK_R3_4
+HEADERS = jitterCleanerYaml.hh
+jitterCleaner_SRCS += jitterCleanerYaml.cc
+
+STATIC_LIBRARIES+=jitterCleaner
+
+
+#tpr_stream_SRCS = tpr_stream.cc
+#tpr_stream_LIBS = $(CPSW_LIBS)
+#PROGRAMS    += tpr_stream
+
+include $(CPSW_DIR)/rules.mak
