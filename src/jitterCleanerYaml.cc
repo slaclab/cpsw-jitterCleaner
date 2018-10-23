@@ -22,7 +22,7 @@ JitterCleanerYaml::JitterCleanerYaml(Path path)
     _scanCount   = IScalVal_RO::create(_path->findByName("ScanCount"));
     _phaseCenter = IScalVal_RO::create(_path->findByName("PhaseCenter"));
     _phaseCalc   = IScalVal_RO::create(_path->findByName("PhaseCalc"));
-    _reScan      = IScalVal  ::create(_path->findByName("ReScan"));
+    _reScan      = IScalVal  ::create(_path->findByName("Rescan"));
 
    
 }
