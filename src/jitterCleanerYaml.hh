@@ -11,9 +11,10 @@ namespace JitterCleaner {
     class JitterCleanerYaml {
 
         protected:
-            Path          _path;
+            Path          _phase_lock_path;
+            Path          _Si5317a_path;
 
-            /* registers */
+            /* registers for phase locker */
             ScalVal       _phaseTarget;
             ScalVal_RO    _delayValue;
             ScalVal_RO    _locked;
@@ -26,8 +27,13 @@ namespace JitterCleaner {
             ScalVal_RO    _phaseCalc;
             ScalVal       _reScan;
 
+           /* register for Si5317a */
+           ScalVal_RO     _cntLos;
+           ScalVal_RO     _cntLol;
+           ScalVal_RO     _cntLocked;
+
         public:
-            JitterCleanerYaml(Path path);
+            JitterCleanerYaml(Path phase_lock_path, Path Si5317a_path);
             void        setPhaseTarget(uint32_t target);
             void        setReScan(uint32_t rescan);
 
@@ -42,6 +48,10 @@ namespace JitterCleaner {
             uint32_t     phaseCenter(void);
             uint32_t     phaseCalc(void);
             uint32_t     reScan(void);
+
+            uint32_t     cntLos(void);
+            uint32_t     cntLol(void);
+            uint32_t     cntLocked(void);
 
     };
 
